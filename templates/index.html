@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <div class="page">
+            <div class="logo">
+                <p>Book reviews</p>
+            </div>
+            <div class="navbar-search navbar-index">
+                <a href={{url_for('register') }}>register</a>
+                <a href={{url_for('search') }}>search</a>
+                <a href={{url_for('contact') }}>contact</a>
+            </div>
+            <form action="/index" method="POST">
+                <div class="login-page">
+                    <div class="login-page-item">
+                        <input type="text" name="username" placeholder="username" autofocus>
+                    </div>
+                    <div class="login-page-item">
+                        <input type="password" name="password" placeholder="password">
+                    </div>
+                    <div class="login-page-item1">
+                        <a href={{ url_for('search') }} class="item-log" id="log"><button type="submit">Log in</button></a>
+                        <div>
+                            <p>Don't have an account? <a href={{ url_for('register') }} id="sign">Sign up</a></p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </form>
+    </div>
+{% endblock %}

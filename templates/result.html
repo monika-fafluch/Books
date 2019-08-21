@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <div class="page-search">
+        <div class="navbar-search">
+            <a href={{url_for('index') }}>home</a>
+            <a href={{url_for('search') }}>search</a>
+            <a href={{url_for('logout') }}>logout</a>
+            <a href="">contact</a>
+        </div>
+
+            <div class="result-container">
+               
+                
+                <div class="result-text-cont">
+                    <div class="hide-result-img-cont">
+                        <div class="book-data">
+                            <p><strong>title:</strong> "{{row.title}}"</p>
+                            <p><strong>author:</strong> <em> {{row.author}}</em></p>
+                            <p><strong>year:</strong>  {{row.year}}</p>
+                            <p><strong>isbn:</strong>  {{row.isbn}}</p>
+                        </div>
+                    </div>
+                    <form action={{ url_for('result', isbn=row.isbn) }} method="POST">
+                        <div class="result-input-container">
+                            {% if no_reviews == 'true' %}
+                                <div class="add-comment">
+                                    <h2> <strong><em>"{{row.title}}"</em></strong> hasn't been reviewed yet.</h2>
+                                    <button onclick="myFunction()" id="onclick" type="button">I want to add my review</button>
+                                    <div id="hide-input" class="add-input">
+                                        <input type="text" name="name" placeholder="your name">
+                                        <input type="email" name="email" placeholder="*your email">
+                                        <label for="email">*Your email won't be visible</label>
+                                        <input id="rating-input" type="number" name="rating" min="1" max="5" placeholder="rating 1-5">
+                                        <textarea id="review-field" type="text" name="review" placeholder="your review | max 500 characters" maxlength="500"></textarea>
+                                        <button type="submit">add your review</button>
+                                    </div>
+                                </div>
+                            {% elif no_reviews == 'false' %}
+                                <div class="add-comment">
+                                    <h2>{{check}} reviews about <strong><em>"{{row.title}}"</em></strong></h2>
+                                    <button onclick="myFunction()" id="onclick" type="button">I want to add my review</button>
+                                    <div id="hide-input" class="add-input">
+                                      
+                                        <input type="text" name="name" placeholder="your name">
+                                        <input type="email" name="email" placeholder="*your email">
+                                        <label for="email">*Your email won't be visible</label>
+                                        <input id="rating-input" type="number" name="rating" min="1" max="5" placeholder="rating 1-5">
+                                        <textarea id="review-field" type="text" name="review" placeholder="your review | max 500 characters" maxlength="500"></textarea>
+                                        <button type="submit">add your review</button>
+                                    </div>
+                                    <div id="hide-scroll" class="result-scroll">
+                                        <ul >
+                                            {% for review in reviews %}
+                                                <div class="whole-review">
+                                                    <div class="li-section">
+                                                        <div class="user-data">
+                                                            <h4>
+                                                                {{review.name}}
+                                                            </h4>
+                                                            <p>
+                                                                {{review.date_time}}
+                                                            </p>
+                                                            <p>rating: <strong>{{review.rating}}/5</strong></p>
+                                                        </div>
+                                                        <li>{{review.review}}</li>  
+                                                    </div>
+                                                    <div class="goodreads">
+                                                        <h3>Goodreads</h3>
+                                                        <p>number of ratings: {{count}} </p>
+                                                        <p>the average rating: {{rating}} </p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}  
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <h1> some weird error</h1>
+                            {% endif %}
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="result-img-cont">
+                    <div class="book-data">
+                        <p><strong>title:</strong> "{{row.title}}"</p>
+                        <p><strong>author:</strong> <em> {{row.author}}</em></p>
+                        <p><strong>year:</strong>  {{row.year}}</p>
+                        <p><strong>isbn:</strong>  {{row.isbn}}</p>
+                    </div>
+                </div>
+            
+            </div>
+    </div>
+    <script>
+        function myFunction(){
+            var x = document.getElementById("hide-input");
+            var y = document.getElementById("hide-scroll");
+            if (x.style.display === "none")
+            {
+                x.style.display = "flex";
+                y.style.display = "none";
+                
+            }
+            else
+            {
+                x.style.display = "none";
+                y.style.display = "flex";
+                
+            }
+        }
+    </script>
+{% endblock %}

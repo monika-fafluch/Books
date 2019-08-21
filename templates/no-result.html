@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <div class="page-search">
+        <div class="navbar-search">
+            <a href={{url_for('index') }}>login</a>
+            <a href={{url_for('register') }}>register</a>
+            <a href="">contact</a>
+        </div>
+
+            <div class="result-container">
+                <div class="result-img-cont">
+                    <div class="book-data">
+                        <p><strong>title:</strong> "{{row.title}}"</p>
+                        <p><strong>author:</strong> <em> {{row.author}}</em></p>
+                        <p><strong>year:</strong>  {{row.year}}</p>
+                        <p><strong>isbn:</strong>  {{row.isbn}}</p>
+                    </div>
+                </div>
+                <div class="result-text-cont">
+                    <form action="/result" method="POST">
+                        <div class="result-input-container">
+                            
+                            <h2> <strong><em>{{row.title}}</em></strong> hasn't been reviewed yet.</h2>
+                            <div class="add-comment">
+                                    <input type="text">
+                                    <button type="submit">add your review</button>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            
+            </div>
+    </div>
+{% endblock %}

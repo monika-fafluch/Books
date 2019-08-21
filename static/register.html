@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <div class="page">
+            <div class="logo">
+                <p>Book reviews</p>
+            </div>
+            <form>
+                <div class="login-page">
+                    <div class="login-page-item">
+                        <input type="text" name="username" placeholder="username" autofocus>
+                    </div>
+                    <div class="login-page-item">
+                        <input type="password" name="password" placeholder="password">
+                    </div>
+                    <div class="login-page-item">
+                        <input type="password" name="confirm-password" placeholder="confirm password">
+                    </div>
+                    <div class="login-page-item1">
+                        <a href="" class="item-sign" id="sign">Sign up?</a>
+                    </div>
+                </div>
+            </form>
+    </div>
+{% endblock %}

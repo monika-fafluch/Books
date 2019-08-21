@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <div class="page-search">
+        <div class="navbar-search">
+            <a href={{url_for('index') }}>home</a>
+            <a href={{url_for('search') }}>search</a>
+            <a href="">contact</a>
+        </div>
+
+        <div class="searched-container">
+            <div class="searched-text-cont">
+                <form action="/search">
+                    <div class="searched-input-container">
+                        <p class="number-results">{{check_number_rows}} results. <strong>Did you mean...</strong></p>
+                        <div class="searched-scroll">
+                            <ol id="links-font" >
+                                {% for row in rows %}
+                                    <a href={{ url_for('result', isbn = row.isbn)}}><li><strong>"{{row.title}}"</strong> by <em>{{row.author}}</em></li></a>
+                                {% endfor %}
+                                
+                            </ol>
+                        </div>
+                        <p class="ask">?</p>
+                    </div>
+                </form>
+            </div>
+            <div class="searched-img-cont">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

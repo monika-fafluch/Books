@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <div class="page">
+            <div class="logo">
+                <p>Book reviews</p>
+            </div>
+            <div class="navbar-search navbar-index">
+                <a href={{url_for('index') }}>login</a>
+                <a href={{url_for('search') }}>search</a>
+                <a href={{url_for('logout') }}>logout</a>
+                <a href="">contact</a>
+            </div>
+            <form action="/register" method="POST">
+                <div class="login-page">
+                    <div class="login-page-item">
+                        <input type="text" name="name" placeholder="name" autofocus>
+                    </div>
+                    <div class="login-page-item">
+                        <input type="email" name="email" placeholder="email">
+                    </div>
+                    <div class="login-page-item">
+                        <input type="password" name="password" placeholder="password">
+                    </div>
+                    <div class="login-page-item">
+                        <input type="password" name="confirm-password" placeholder="confirm password">
+                    </div>
+                    {% if which_error == "not" %}
+                        <h3 style="color:rgb(43, 43, 43)">You didn't fill out the form</h3>
+                    {% endif %}
+                    {% if which_error == "match" %}
+                        <h3 style="color:rgb(43, 43, 43)">Passwords do not match</h3>
+                    {% endif %}
+                    {% if which_error == "registered" %}
+                        <h3 style="color:rgb(43, 43, 43)">You're already registered</h3>
+                    {% endif %}
+                    <div class="login-page-item1">
+                        <a href={{ url_for('index') }}  class="item-log" id="log"><button type="submit">Sign up</button></a>
+
+                      
+                    </div>
+                </div>
+            </form>
+    </div>
+{% endblock %}

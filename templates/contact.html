@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <div class="page">
+            <div class="logo">
+                <p>Book reviews</p>
+            </div>
+            <div class="navbar-search navbar-index">
+                <a href={{url_for('index') }}>home</a>
+                <a href={{url_for('register') }}>register</a>
+                <a href={{url_for('search') }}>search</a>
+            </div>
+                <div class="login-page">
+                    <h2 style="color:rgb(33, 33, 33)">monika.fafluch@gmail.com</h2>
+                </div>
+    </div>
+{% endblock %}

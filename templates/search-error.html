@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <div class="page-search">
+        <div class="navbar-search">
+            <a href={{url_for('index') }}>home</a>
+            <a href={{url_for('register') }}>register</a>
+            <a href={{url_for('logout') }}>logout</a>
+            <a href="">contact</a>
+        </div>
+
+        <div class="search-container">
+            <div class="text-cont">
+                <form action="/search" method="POST">
+                    <div class="input-container">
+                        
+                        <h2 id="h2">I want to read reviews about...</h2>
+                        <h3>Search by title:</h3>
+                        <input type="text" name="title" placeholder="title" autofocus>
+                        <h3>Search by author:</h3>
+                        <input type="text" name="author" placeholder="author">
+                        <h3>Search by isbn:</h3>
+                        <input type="text" name="isbn" placeholder="isbn">
+                        <h4 style="color:rgb(43, 43, 43)">There is no such book in our database</h4>
+                        <input type="submit" value="search" id="search-submit">
+                    </div>
+                </form>
+            </div>
+            <div class="img-cont">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
