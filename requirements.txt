@@ -13,7 +13,7 @@ django-cors-headers==3.1.0
 django-heroku==0.3.1
 dnspython==1.16.0
 entrypoints==0.3
-eventlet==0.25.0
+eventlet==0.31.0
 flake8==3.7.7
 Flask==1.0.3
 Flask-Session==0.3.1
